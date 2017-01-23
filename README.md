@@ -1,3 +1,8 @@
+### Front End Masters: The Good Parts of JS and the Web
+Below are Function Challenges that were a part of the **Fun with Functions**
+part the course. They help show some of the more powerful things that you can do with
+JavaScript functions.
+
 1. Write and identity() function that takes and argument and returns that argument
 ie.
 ```
@@ -19,7 +24,7 @@ ie.
 const three = indetityf(3)
 three() // 3
 ```
-
+*hiring question!*
 4. Write a function addf() that adds from two invocations.
 ie.
 ```
@@ -80,7 +85,7 @@ ie (2+3)x(7)
 composeb(add, mul)(2,3,7)      // 35
 ```
 
-12. Write a limit function that allows a binary function to be called a limited number of times.
+12. Write a limit() function that allows a binary function to be called a limited number of times.
 ie.
 ```
 const add_ltd = limit(add, 1)
@@ -247,7 +252,7 @@ JSON.stringify( addm( m(Math.PI, "pi"), m(1) ) )
 // {"value": 4.14159..., "source": "pi+1"}
 
 ```
-31. Write a function liftm that takes a binary function and a string and returns a function that acts on m objects.
+31. Write a function liftm() that takes a binary function and a string and returns a function that acts on m objects.
 ```
 const addm = liftm( add, '+')
 JSON.stringify( addm( m(1), m(3) ) )                
@@ -256,3 +261,66 @@ JSON.stringify( liftm(mul, '*')( m(2), m(4) ) )
 // {"value": 8, "source": "2*4"}
 
 ```
+32. Modify liftm() so that the functions it produces can accept arguments that are either number or m objects.
+```
+const addm = liftm( add, '+')
+JSON.stringify( addm(4, 3) )                
+// {"value": 7, "source": "4+3"}
+```
+
+33. Write a function exp() that evaluates simple array expressions.
+```
+const sae = [mul, 5, 11]
+exp(sae)            // 55
+exp(42)             // 42
+exp([sum, 1, 2])    // 3
+```
+34. Modify exp() to evaluate nested array expressions
+```
+const nae = [ Math.sqrt,
+  [ add,
+    [square, 3],
+    [square, 4],
+  ]
+]
+exp(nae)
+```
+35. Write a function addg() that adds from many invocations, until it sees an empty invocation.
+```
+addg()              // undefined
+addg(2)()           // 2
+addg(2)(7)()        // 9
+addg(3)(0)(4)()     // 7
+addg(1)(2)(4)(8)()  // 15
+```
+**// this is a retusive function: a function returns itself**
+
+36. Write a function liftg() that will take a binary function and apply it to many invocations.
+```
+liftg(mul)()              // undefined
+liftg(mul)(2)()           // 2
+liftg(mul)(3)(0)(4)()     // 0
+liftg(mul)(1)(2)(4)(8)()  // 64
+```
+37. Write a function arrayg() that will build an array from many invocations.
+```
+arrayg()            // []
+arrayg(3)()         // [3]
+arrayg(3)(4)(5)()   // [3, 4, 5]
+```
+38. Make a function continuize() that takes a unary function, and returns a function that takes a call back and an argument.
+```
+sqrtc = continuize(Math.sqrt)
+sqrtc(console.log, 81)        // 9
+```
+
+# INTRO TO SECURITY
+39. Make an arry wrapper object with methods get(), store(), and append(), such that an attacker cannot get access to the private array.
+```
+myvector = vector()
+myvector.append(7)
+myvector.store(1, 8)
+myvector.get(0)         // 7
+myvector.get(1)         // 8
+```
+40. Try and hack one of the function so that you can get access to the inner **'private'** array and directly manipulate it.

@@ -1,3 +1,5 @@
+
+// 2.
 const add = (a, b) => a+b
 const sub = (a, b) => a-b
 const mul = (a, b) => a*b
@@ -5,6 +7,7 @@ console.log( 'add:', add(2,3) )
 console.log( 'sub:', sub(2,3))
 console.log('mul:', mul(2,3) )
 
+// 3.
 const identityF = (arg) => {
   return function() {
     return arg
@@ -13,7 +16,8 @@ const identityF = (arg) => {
 const three = identityF('farts')
 console.log('three():', three())
 
-// hiring question!
+
+// 4. hiring question!
 const addf = (one) => {
   return function(two) {
     return one + two
@@ -22,7 +26,8 @@ const addf = (one) => {
 console.log('--->addf')
 console.log('addf()():', addf(3)(4))
 
-// higher order function (functional progs)
+
+// 5. higher order function (functional progs)
 const liftf = (func) => {
   return function(one) {
     return function(two) {
@@ -35,6 +40,7 @@ console.log('--->LiftFunc')
 console.log('myAddF(3)(4):', myAddF(3)(4))
 console.log('liftf(mul)(5)(6):', liftf(mul)(5)(6))
 
+// 6.
 const curry = (func, num) => {
   return function(num2) {
     return func(num, num2)
@@ -46,6 +52,7 @@ console.log('--->CurryFunc')
 console.log('add3(4):', add3(4))
 console.log('curry(mul, 5)(6):', curry(mul, 5)(6))
 
+// 7.
 const inc1 = addf(1)
 const inc2 = liftf(add)(1)
 const inc3 = curry(add, 1)
@@ -56,6 +63,7 @@ console.log('inc1(inc1(5)):',inc1(inc1(5)) )
 console.log('inc2(inc2(5)):',inc2(inc2(5)) )
 console.log('inc3(inc3(5)):', inc3(inc3(5)))
 
+// 8.
 const twice = (func) => {
   return function(num) {
     return func(num, num)
@@ -66,6 +74,7 @@ const square = twice(mul)
 console.log('doubl(11):', doubl(11))
 console.log('square(11):', square(11))
 
+// 9.
 const reverse = (func) => {
   return function(a,b){
     return func(b,a)
@@ -73,6 +82,7 @@ const reverse = (func) => {
 }
 console.log('reverse(sub)(3, 2) :', reverse(sub)(3, 2) )
 
+// 10.
 const composeu = (func1, func2) => {
   return function(num) {
     return func2(func1(num))
@@ -80,6 +90,7 @@ const composeu = (func1, func2) => {
 }
 console.log('composeu(doubl, square)(5):', composeu(doubl, square)(5))
 
+// 11
 const composeb = (func1, func2) => {
   return function (a,b,c) {
     return func2(func1(a,b), c)
@@ -87,6 +98,7 @@ const composeb = (func1, func2) => {
 }
 console.log('composeb(add, mul)(2,3,7):', composeb(add, mul)(2,3,7))
 
+// 12
 const limit = (func, callLDT) => {
   let numCalls = 0
   return function(a, b) {
@@ -103,6 +115,7 @@ console.log('add_ltd(3, 4):', add_ltd(3, 4))
 console.log('add_ltd(3, 4):', add_ltd(3, 4))
 
 
+// 13.
 const from = (start) => {
   return function(){
     return start++;
@@ -113,6 +126,7 @@ console.log('index():', index())
 console.log('index():', index())
 console.log('index():', index())
 
+// 14.
 const to = (gen, limit) => {
   return function() {
     let count = gen()
@@ -127,6 +141,7 @@ console.log('index2():', index2())
 console.log('index2():', index2())
 console.log('index2():', index2())
 
+// 15.
 const fromTo = (begin, end) => {
   return to(from(begin), end)
 }
@@ -136,6 +151,7 @@ console.log('index3():',index3() )
 console.log('index3():',index3() )
 console.log('index3():',index3() )
 
+// 16. - 17.
 const element = (array, gen) => {
   return function() {
     return array[gen()]
@@ -159,6 +175,7 @@ console.log('ele2():', ele2())
 console.log('ele2():', ele2())
 console.log('ele2():', ele2())
 
+// 18.
 const collect = (gen, array) => {
   return function() {
     let value = gen()
@@ -175,6 +192,7 @@ console.log('col():', col())
 console.log('col():', col())
 console.log('array:', array)
 
+// 19.
 const filter = (gen, predicate) => {
   return function fart() {
     let value = gen()
@@ -191,6 +209,7 @@ console.log('fil():', fil())
 console.log('fil():', fil())
 console.log('fil():', fil())
 
+// 20.
 const concat = (genFirst, genSecond) => {
   return function() {
     let val = genFirst()
@@ -209,6 +228,7 @@ console.log('-->con():', con())
 console.log('-->con():', con())
 
 
+// 24.
 const gensymf = (sym) =>{
   let count = 1
   return function() {
@@ -222,6 +242,7 @@ console.log('genh():', genh())
 console.log('geng():', geng())
 console.log('genh():', genh())
 
+// 26.
 const fibonaccif = (int1, int2) => {
   return function() {
     let nextInt = int1
@@ -236,6 +257,7 @@ console.log('fib():', fib())
 console.log('fib():', fib())
 console.log('fib():', fib())
 
+// 27.
 const objCounter = (num) => {
   return {
     up: function() {
@@ -255,6 +277,7 @@ console.log('myObjCounter.up():', myObjCounter.up())
 console.log('myObjCounter.down():', myObjCounter.down())
 console.log('myObjCounter.up():', myObjCounter.up())
 
+// 28.
 const revocable = (func) => {
   let revoked = true
   return {
@@ -274,6 +297,7 @@ console.log('add_rev(1,2):', add_rev(1,2))
 rev.revoke()
 console.log('add_rev(1,2):', add_rev(1,2))
 
+// 29.
 const m = (value, source=value) => {
   return {
     'value': value,
@@ -283,12 +307,14 @@ const m = (value, source=value) => {
 console.log(JSON.stringify(m(1)))
 console.log(JSON.stringify(m('farts', 'smelly')))
 
+// 30.
 const addm = (m1, m2) => {
   return m(m1.value+m2.value, `(${m1.source}+${m2.source})`)
 }
 console.log( JSON.stringify( addm( m(1), m(3) ) ) )
 console.log( JSON.stringify( addm( m(1), m(Math.PI, 'pi') ) ) )
 
+// 31.- 32.
 const liftm = (func, string) => {
   return function(num1, num2) {
     typeof(num1) === 'number'? num1 = m(num1): num1
@@ -305,6 +331,7 @@ console.log( JSON.stringify( myaddm( 1, 3 ) ) )
 console.log( JSON.stringify( mymulm( 3, 3 ) ) )
 console.log( JSON.stringify( myaddm( m(1), m(Math.PI, 'pi') ) ) )
 
+// 33.- 34.
 const exp = (array) => {
   if(Array.isArray(array)) {
     return array[0](exp(array[1]), exp(array[2]))
@@ -315,6 +342,7 @@ console.log('exp([mul, 5, 11]):', exp([mul, 5, 11]))
 console.log('exp(42):', exp(42))
 console.log('exp(42):', exp([Math.sqrt,[add,[square, 3],[square, 4]]]))
 
+// 35.
 const addg = (value) => {
   function more(next) {
     if (next === undefined) {
@@ -329,6 +357,7 @@ const addg = (value) => {
 }
 console.log('addg(5):', addg(5)(8)(9)())
 
+// 36.
 const liftg = (binary) => {
   let lastMore = undefined
   function more(next) {
@@ -351,7 +380,7 @@ const liftg = (binary) => {
   }
 }
 
-
+// Crockfords Solution. Its better.
 // liftg retruns a functions that either returns first(the binary)
 // or the function more()
 const betterLiftg = (binary) => {
@@ -372,6 +401,7 @@ const liftedMul = betterLiftg(mul)
 console.log('liftedMul():', liftedMul(9)(7)())
 console.log('betterLiftg(5):', betterLiftg(mul)(8)(9)(0)())
 
+// 37.
 const arrayg = (value) => {
   if(value === undefined){
     return []
@@ -388,6 +418,7 @@ const arrayg = (value) => {
 }
 console.log('arrayg(3)():', arrayg(6)())
 
+// 38
 const continuize = (unary) =>{
   return function(callback, value) {
     return callback(unary(value))
@@ -397,6 +428,7 @@ const sqrtc = continuize(Math.sqrt)
 let a = []
 sqrtc(console.log, 81)
 
+// 39. INTRO TO SECURITY
 // we have an array that we want to protect behind an API
 function vector() {
   let floopy = []
@@ -413,6 +445,7 @@ function vector() {
   }
 }
 
+
 // a attacker can get access to this object by:
 let stash;
 let farts = vector()
@@ -423,11 +456,12 @@ farts.append(2)
 farts.append(1)
 farts.append(2)
 console.log('farts.get(1):', farts.get(1))
+
+// THIS IS THE HACK
 farts.store('push', function() {
   stash = this;
 })
 
 console.log('farts.append():', farts.append())
 console.log('stash:', stash)
-
 // fix this by doing array[+1] cause arrays are not arrays!
