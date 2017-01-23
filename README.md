@@ -1,5 +1,5 @@
 ### Front End Masters: The Good Parts of JS and the Web
-Below are Function Challenges that were a part of the **Fun with Functions**
+Below are Function Challenges that were a part of the *Fun with Functions*
 part the course. They help show some of the more powerful things that you can do with
 JavaScript functions.
 
@@ -293,7 +293,7 @@ addg(2)(7)()        // 9
 addg(3)(0)(4)()     // 7
 addg(1)(2)(4)(8)()  // 15
 ```
-**// this is a retusive function: a function returns itself**
+*// this is a retusive function: a function returns itself*
 
 36. Write a function liftg() that will take a binary function and apply it to many invocations.
 ```
@@ -323,4 +323,4 @@ myvector.store(1, 8)
 myvector.get(0)         // 7
 myvector.get(1)         // 8
 ```
-40. Try and hack one of the function so that you can get access to the inner **'private'** array and directly manipulate it.
+40. Try and hack one of the function so that you can get access to the inner *'private'* array and directly manipulate it.
